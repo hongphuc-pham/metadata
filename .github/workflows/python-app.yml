@@ -69,6 +69,20 @@ jobs:
         # available to the inputs of a reusable workflow call.
         image_name="${IMAGE_REGISTRY}/${IMAGE_NAME}"
         echo "image=$image_name" >> "$GITHUB_OUTPUT"
+    
+    - name: cosign-installer
+      uses: sigstore/cosign-installer@v2.0.0
+
+    - name: Sign the published Docker image
+      env:
+        COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
+      run: cosign sign --key cosign.key ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_id }}
+
+    - name: Write signing key to disk
+      run: 'echo "$KEY" > cosign.key'
+      shell: bash
+      env:
+        KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
 
   # This step calls the container workflow to generate provenance and push it to
   # the container registry.
