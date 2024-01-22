@@ -37,6 +37,9 @@ jobs:
     - name: Checkout the repository
       uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # v2.3.4
 
+    - name: cosign-installer
+      uses: sigstore/cosign-installer@v3.1.1
+      
     - name: Set up QEMU
         uses: docker/setup-qemu-action@v2.1.0
     
@@ -73,9 +76,6 @@ jobs:
         # available to the inputs of a reusable workflow call.
         image_name="${IMAGE_REGISTRY}/${IMAGE_NAME}"
         echo "image=$image_name" >> "$GITHUB_OUTPUT"
-    
-    - name: cosign-installer
-      uses: sigstore/cosign-installer@v3.1.1
 
     - name: Sign the published Docker image
       env:
