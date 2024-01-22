@@ -91,9 +91,7 @@ jobs:
 
     steps:
     - name: Install cosign
-        uses: sigstore/cosign-installer@v2.1.0
-        with:
-          cosign-release: v1.6.0
+      uses: sigstore/cosign-installer@v3.3.0
     
     - name: Write signing key to disk
       run: 'echo "$KEY" > cosign.key'
