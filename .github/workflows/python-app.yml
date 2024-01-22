@@ -73,6 +73,12 @@ jobs:
     - name: cosign-installer
       uses: sigstore/cosign-installer@v3.1.1
 
+    - name: Write signing key to disk
+      run: 'echo "$KEY" > cosign.key'
+      shell: bash
+      env:
+        KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        
     - name: Sign the published Docker image
       env:
         COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
@@ -80,11 +86,7 @@ jobs:
       run: c|
           cosign sign --yes --key env://COSIGN_PRIVATE_KEY  ghcr.io/${{ github.repository }}:latest
 
-    - name: Write signing key to disk
-      run: 'echo "$KEY" > cosign.key'
-      shell: bash
-      env:
-        KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+    
 
   # This step calls the container workflow to generate provenance and push it to
   # the container registry.
