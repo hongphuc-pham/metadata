@@ -1,0 +1,73 @@
+=============== Jan 18, 2024 (ACDT) ===============
+23:16:32.978314 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:16:32.986027 db@open opening
+23:16:32.987289 version@stat F·[] S·0B[] Sc·[]
+23:16:32.989229 db@janitor F·2 G·0
+23:16:32.989318 db@open done T·3.196666ms
+=============== Jan 18, 2024 (ACDT) ===============
+23:16:52.887987 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:16:52.888384 version@stat F·[] S·0B[] Sc·[]
+23:16:52.888478 db@open opening
+23:16:52.888522 journal@recovery F·1
+23:16:52.889543 journal@recovery recovering @1
+23:16:52.894996 memdb@flush created L0@2 N·1 S·2KiB "roo..son,v1":"roo..son,v1"
+23:16:52.895134 version@stat F·[1] S·2KiB[2KiB] Sc·[0.25]
+23:16:52.903625 db@janitor F·3 G·0
+23:16:52.904798 db@open done T·16.278327ms
+=============== Jan 18, 2024 (ACDT) ===============
+23:20:09.734100 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:20:09.737496 version@stat F·[1] S·2KiB[2KiB] Sc·[0.25]
+23:20:09.737622 db@open opening
+23:20:09.737676 journal@recovery F·1
+23:20:09.738800 journal@recovery recovering @3
+23:20:09.746516 memdb@flush created L0@5 N·6 S·12KiB "roo..son,v5":"tim..son,v6"
+23:20:09.748390 version@stat F·[2] S·15KiB[15KiB] Sc·[0.50]
+23:20:09.757844 db@janitor F·4 G·0
+23:20:09.757892 db@open done T·20.239087ms
+=============== Jan 18, 2024 (ACDT) ===============
+23:55:16.466150 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:55:16.468203 version@stat F·[2] S·15KiB[15KiB] Sc·[0.50]
+23:55:16.468389 db@open opening
+23:55:16.468443 journal@recovery F·1
+23:55:16.469386 journal@recovery recovering @6
+23:55:16.470556 version@stat F·[2] S·15KiB[15KiB] Sc·[0.50]
+23:55:16.478012 db@janitor F·4 G·0
+23:55:16.478045 db@open done T·9.62724ms
+=============== Jan 18, 2024 (ACDT) ===============
+23:56:07.989361 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:56:07.992396 version@stat F·[2] S·15KiB[15KiB] Sc·[0.50]
+23:56:07.992584 db@open opening
+23:56:07.992768 journal@recovery F·1
+23:56:07.998130 journal@recovery recovering @8
+23:56:08.010063 memdb@flush created L0@10 N·1 S·2KiB "roo..son,v10":"roo..son,v10"
+23:56:08.010829 version@stat F·[3] S·18KiB[18KiB] Sc·[0.75]
+23:56:08.018124 db@janitor F·5 G·0
+23:56:08.018165 db@open done T·25.552539ms
+=============== Jan 18, 2024 (ACDT) ===============
+23:59:21.218083 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:59:21.219662 version@stat F·[3] S·18KiB[18KiB] Sc·[0.75]
+23:59:21.219808 db@open opening
+23:59:21.219911 journal@recovery F·1
+23:59:21.221437 journal@recovery recovering @11
+23:59:21.224577 memdb@flush created L0@13 N·3 S·7KiB "roo..son,v14":"roo..son,v12"
+23:59:21.225453 version@stat F·[4] S·25KiB[25KiB] Sc·[1.00]
+23:59:21.234845 db@janitor F·6 G·0
+23:59:21.234967 db@open done T·15.0225ms
+=============== Jan 18, 2024 (ACDT) ===============
+23:59:32.120199 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+23:59:32.121678 version@stat F·[4] S·25KiB[25KiB] Sc·[1.00]
+23:59:32.121765 db@open opening
+23:59:32.121817 journal@recovery F·1
+23:59:32.126437 journal@recovery recovering @14
+23:59:32.128583 memdb@flush created L0@16 N·1 S·2KiB "roo..son,v16":"roo..son,v16"
+23:59:32.128807 version@stat F·[5] S·28KiB[28KiB] Sc·[1.25]
+23:59:32.137609 db@janitor F·7 G·0
+23:59:32.137647 db@open done T·15.855293ms
+23:59:32.140267 table@compaction L0·5 -> L1·0 S·28KiB Q·17
+23:59:32.145762 table@build created L1@19 N·4 S·8KiB "roo..son,v16":"tim..son,v6"
+23:59:32.145859 version@stat F·[0 1] S·8KiB[0B 8KiB] Sc·[0.00 0.00]
+23:59:32.152049 table@compaction committed F-4 S-19KiB Ke·0 D·8 T·11.673122ms
+23:59:32.152222 table@remove removed @13
+23:59:32.152255 table@remove removed @10
+23:59:32.152282 table@remove removed @5
+23:59:32.152306 table@remove removed @2

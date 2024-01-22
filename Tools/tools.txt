@@ -1,0 +1,33 @@
+SSC Metadata Generator - CycloneDX CLI
+Purpose: Generates a SBOM file from a project file system location
+Command: sudo ./cyclonedx-osx-arm64 add files --no-input --output-format json --output-file getting-started-app-sbom --base-path /Users/navi/Documents/SSC\ Project/Tools/getting-started-app
+Does not mention functionality for containers, so may have to stick with Syft SBOM itself.
+
+Syft SBOM: ./syft ghcr.io/navisk13/actions-tester:main -o cyclonedx-json > sample-sbom.json
+
+SSC Metadata Editor - VSCode
+
+SSC Metadata Signer - Cosign
+Instructions (not tested yet) - https://github.com/sigstore/cosign#working-with-other-artifacts
+
+CI/CD Pipeline - GitHub Actions
+
+Pipeline Observer - SLSA3 Container Generator for Github Actions
+Already configured on GitHub Actions, now trying to access the provenance file using cosign.
+Command to view provenance tree: ./cosign tree ghcr.io/navisk13/actions-tester:main
+
+Command to download attestation: ./cosign download attestation ghcr.io/navisk13/actions-tester:main | jq -r '.payload' | base64 -d | jq > provenance.json
+
+Authenticate GHCR on the terminal shell: export CR_PAT=<your-github-access-token>
+echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
+
+
+References:
+Github Actions: https://docs.github.com/en/actions/quickstart, https://docs.github.com/en/actions/learn-github-actions/using-starter-workflows
+SLSA3 Container Generator: https://slsa.dev/blog/2023/02/slsa-github-workflows-container-ga
+Authenticating Github Container Registry (GHCR): https://dev.to/willvelida/pushing-container-images-to-github-container-registry-with-github-actions-1m6b
+
+https://github.com/sigstore/rekor
+https://docs.sigstore.dev/logging/overview/#usage-and-installation
+https://docs.sigstore.dev/logging/installation/
+https://github.com/google/trillian
