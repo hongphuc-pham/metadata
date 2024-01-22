@@ -83,8 +83,8 @@ jobs:
         COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
         COSIGN_EXPERIMENTAL: "true"
-      run: cosign sign ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.build-and-push.outputs.digest }}
-
+      run: |
+          cosign sign  --key cosign.key ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_id }}
     
 
   # This step calls the container workflow to generate provenance and push it to
