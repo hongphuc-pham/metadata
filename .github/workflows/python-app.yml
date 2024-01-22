@@ -78,13 +78,19 @@ jobs:
       shell: bash
       env:
         KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
-        
+    
+    - name: Get the digest of the OCI artifact
+        id: crane
+        run: |
+          DIGEST=$(crane digest $GHCR_REPO:$(git rev-parse --short HEAD))
+          echo "DIGEST=$DIGEST" >> $GITHUB_OUTPUT
+
     - name: Sign the published Docker image
       env:
         COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
       run: c|
-          cosign sign --yes --key env://COSIGN_PRIVATE_KEY  ghcr.io/${{ github.repository }}:latest
+          cosign sign $GHCR_REPO@${{ steps.crane.outputs.DIGEST }} -y
 
     
 
