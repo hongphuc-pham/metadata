@@ -112,8 +112,8 @@ jobs:
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
         COSIGN_EXPERIMENTAL: 1
       run: |
-          cosign sign  --key cosign.key ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_id }}
-          # cosign sign --key cosign.key "${IMAGE_NAME}@${IMAGE_DIGEST}"
+          # cosign sign  --key cosign.key ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_id }}
+          cosign sign --key cosign.key "${IMAGE_NAME}:${IMAGE_DIGEST}"
     
 
   # This step calls the container workflow to generate provenance and push it to
