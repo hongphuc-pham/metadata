@@ -73,24 +73,12 @@ jobs:
     - name: cosign-installer
       uses: sigstore/cosign-installer@v3.1.1
 
-    - name: Write signing key to disk
-      run: 'echo "$KEY" > cosign.key'
-      shell: bash
-      env:
-        KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
-    
-    - name: Get the digest of the OCI artifact
-        id: crane
-        run: |
-          DIGEST=$(crane digest $GHCR_REPO:$(git rev-parse --short HEAD))
-          echo "DIGEST=$DIGEST" >> $GITHUB_OUTPUT
-
     - name: Sign the published Docker image
       env:
         COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
         COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
-      run: c|
-          cosign sign $GHCR_REPO@${{ steps.crane.outputs.DIGEST }} -y
+      run: |
+          cosign sign --yes --key env://COSIGN_PRIVATE_KEY  ghcr.io/${{ github.repository }}:${{ steps.meta.outputs.tags }}
 
     
 
