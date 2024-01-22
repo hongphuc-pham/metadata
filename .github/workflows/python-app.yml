@@ -95,7 +95,7 @@ jobs:
         COSIGN_EXPERIMENTAL: 1
       run:  |
           # cosign sign  --key cosign.key ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_id }}
-          cosign sign --key env://COSIGN_PRIVATE_KEY ghcr.io/${{env.IMAGE_NAME}}:${{env.IMAGE_DIGEST}}latest -r false
+          cosign sign --key env://COSIGN_PRIVATE_KEY ghcr.io/${{env.IMAGE_NAME}}:${{env.IMAGE_DIGEST}}sha256:5ff70949dbf4fd962a5bc3acb4e18f69602b4f8b054b052d73ee2b0c91742fbd
     
 
   # This step calls the container workflow to generate provenance and push it to
