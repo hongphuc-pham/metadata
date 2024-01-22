@@ -71,12 +71,14 @@ jobs:
         echo "image=$image_name" >> "$GITHUB_OUTPUT"
     
     - name: cosign-installer
-      uses: sigstore/cosign-installer@v2.0.0
+      uses: sigstore/cosign-installer@v3.1.1
 
     - name: Sign the published Docker image
       env:
         COSIGN_PASSWORD: ${{secrets.COSIGN_PASSWORD}}
-      run: cosign sign --key cosign.key ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:${{ github.run_id }}
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+      run: c|
+          cosign sign --yes --key env://COSIGN_PRIVATE_KEY  ghcr.io/${{ github.repository }}:latest
 
     - name: Write signing key to disk
       run: 'echo "$KEY" > cosign.key'
